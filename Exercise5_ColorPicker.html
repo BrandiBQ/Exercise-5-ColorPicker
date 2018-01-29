@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Exercise 5: Color Picker</title>
+	<style>
+        body {
+            background-color: beige;
+        }
+		#container {
+			border: 5px solid blue;
+            padding: 10px;
+            font-family:"Trebuchet MS", Segoe, sans-serif;
+			margin:0px auto;
+            width: 500px;
+			font-size: 1.2em;
+            background-color: cadetblue;
+		}      
+        
+        h1{
+            text-align: center;
+        }
+        
+        #instructions {
+            text-align: center;
+        }
+        
+        label {
+            margin-left: 50px;
+        }
+        
+        .input {
+            width: 80px;
+        }
+        
+		button {
+			padding: 5px;
+            float: right;            
+		}
+        
+        #clear{
+            margin-right: 35px;
+        }
+        
+		#box {
+			width: 300px;
+			height: 38px;
+			margin-left: 30px;
+		}
+	
+	</style>
+</head>
+<body>
+	<div id="container">
+    <h1>CSS Color Displayer</h1>
+    <div id="instructions">Select a number from 0 to 255 for each color value:</div>
+    <br>
+    <button id="submit">Show me the color!</button>
+
+    <form id="resetForm">  
+    
+    <label for="red">Red:</label>
+    <input id="red" class="input" type="text"/>
+    <br>
+    <br>
+        
+    <label for="green">Green:</label>
+    <input id="green" class="input" type="text"/>
+    <br>
+    <br>
+        
+    <label for="blue">Blue:</label>
+    <input id="blue" class="input" type="text"/>
+    </form>
+    <br>
+    <input type= "text" id="box">        
+    <button id="clear">Clear all</button>
+        
+    </div>
+	
+	<script>
+        
+    let elRed = document.getElementById("red");    
+    let elGreen = document.getElementById("green");
+    let elBlue = document.getElementById("blue");
+        
+    let elSubmit = document.getElementById("submit");
+    let elClear = document.getElementById("clear");
+    let elBox = document.getElementById("box")        
+    
+	elSubmit.addEventListener("click", clickHandler, false);
+    elClear.addEventListener("click", reset, false);    
+		
+	function clickHandler() {          
+        elRed = parseInt(red.value);
+        elGreen = parseInt(green.value);
+        elBlue = parseInt(blue.value);
+                
+        if (isNaN(elRed) || isNaN(elGreen) || isNaN(elBlue) || elRed > 255 || elRed < 0 || elGreen > 255 || elGreen < 0 || elBlue > 255 || elBlue < 0) {
+            alert("Please enter a number between 0 and 255!");
+            document.getElementById("resetForm").reset();
+        } else {
+            elBox.style.backgroundColor = `rgb( ${elRed}, ${elGreen}, ${elBlue} )`;
+        }
+	}	
+        
+    function reset(){
+        document.getElementById("resetForm").reset();
+        elBox.style.backgroundColor = null;
+    }        
+	</script>
+    
+</body>
+</html>
